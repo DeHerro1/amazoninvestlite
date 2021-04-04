@@ -1,34 +1,32 @@
 import Head from 'next/head'
 import Form from '../components/Form/Form'
+import Image from 'next/image';
 import LandingPage from '../components/LandingPage/LandingPage'
 import styles from '../styles/Home.module.css'
+import Nav from '../components/Nav/Nav';
+import InvestPage from '../components/FirstSection/InvestPage';
+import Footer from '../components/Footer/Footer';
 
 export default function Home() {
   return (
     <div className={styles.container}>
-       <nav className={styles.nav}>
-         <h2>investLite</h2>
-       </nav>
-       <div className={styles.firstSection}>
-         <section className={styles.image}>
-           {/* <img src='../public/landingimage.png' alt="image" /> */}
-         </section>
-         <section className={styles.firstSectionTexts}>
-           <p className={styles.invest}>INVEST IN THE BEST:</p>
-           <p className={styles.amazon}>AMAZON</p>
-           <p className={styles.investNow}>INVEST NOW</p>
-         </section>
-       </div>
+       <Nav />
+       <InvestPage />
        <div className={styles.form}>
-       <p className={styles.form_head}>Invest in Amazon</p>
+       <p className={styles.formHead}>Invest in Amazon</p>
          <Form />
-        <p className={styles.form_footer}>To invest in Amazon you must be at least 18 years old. 
+        <p className={styles.formFooter}>To invest in Amazon you must be at least 18 years old. 
            Minimum required capital 250$</p>
+           <div className={styles.icons}>
+          {/* flat png from pngtree.com */}
+          {/* <Image src="https://pngtree.com/so/flat" height="50" width="100" /> */}
         </div>
-        <div className={styles.icons}></div>
+        </div>
+        
         <div>
           <LandingPage />
         </div>
+        <Footer />
     </div>
   )
 }

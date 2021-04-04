@@ -1,0 +1,107 @@
+.image {
+    position: relative;
+    left: -35px;
+    z-index: 10;
+    width: 90%;
+  }
+
+.firstSectionTexts {
+     position: absolute;
+    top: 70px;
+    text-align: end;
+    left: 120px;
+}
+.amazon {
+    color: var(--native_color);
+    font-weight: 800;
+    font-size: 2.5rem;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.investNow {
+    color: var(--native_color);
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.invest {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+@media (min-width: 400px) {
+    .firstSectionTexts {
+        top: 80px;
+        left: 200px;
+    }
+
+    .image {
+        left: -10px;
+        width: 70%;
+    }
+
+    .amazon {
+        font-size: 2.6rem;
+    }
+    
+    .investNow {
+        font-size: 1.5rem;
+    }
+    
+    .invest {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .firstSection {
+        height: 430px;
+    }
+
+    .firstSectionTexts {
+        left: 200px;
+    }
+
+    .image {
+        top: -5px;
+        left: -15px;
+        width: 45%;
+      }
+}
+
+@media (min-width: 900px) {
+    .firstSection {
+        height: 400px;
+        background-color: teal;
+        overflow: hidden;
+    }
+
+    .firstSectionTexts {
+        left: 300px;
+    }
+
+    .amazon {
+        font-size: 3.4rem;
+    }
+    
+    .investNow {
+        text-align: center;
+    }
+    
+    .invest {
+        text-align: left;
+        font-size: 1.6rem;
+    }
+
+    .image {
+        top: 30px;
+        left: 80px;
+        width: 30%;
+      }
+}
