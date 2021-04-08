@@ -18,6 +18,7 @@ const InvestPage = () => {
            <p className={styles.amazon}>AMAZON</p>
            <p className={styles.investNow}>INVEST NOW</p>
          </section>
+         {/* //alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45482 */}
        </div>
     )
 }

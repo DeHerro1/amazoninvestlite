@@ -4,7 +4,7 @@ import style from '../../../styles/Card.module.css';
 const Card = ({text, icon}) => {
     return (
         <div className={style.secure}>
-            <h2> {icon} </h2>
+            <div className={style.icon}> {icon} </div>
             <p> {text} </p>
         </div>
     )

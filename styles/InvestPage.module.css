@@ -1,20 +1,27 @@
+.firstSection {
+    background-image: url(//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/bg-top-mobile.jpg?v=45525);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .image {
     position: relative;
     left: -35px;
     z-index: 10;
-    width: 90%;
+    width: 80%;
   }
 
 .firstSectionTexts {
      position: absolute;
     top: 70px;
     text-align: end;
-    left: 120px;
+    left: 110px;
 }
 .amazon {
     color: var(--native_color);
     font-weight: 800;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     padding: 0;
     margin: 0;
     z-index: 1;
@@ -29,6 +36,7 @@
 }
 
 .invest {
+    color: white;
     font-size: 1.2rem;
     font-weight: 500;
     padding: 0;
@@ -59,6 +67,12 @@
     }
 }
 
+@media (min-width: 550px) {
+    .firstSectionTexts {
+        left: 300px;
+    }
+}
+
 @media (min-width: 768px) {
     .firstSection {
         height: 430px;
@@ -77,8 +91,7 @@
 
 @media (min-width: 900px) {
     .firstSection {
-        height: 400px;
-        background-color: teal;
+        height: 450px;
         overflow: hidden;
     }
 
@@ -100,8 +113,36 @@
     }
 
     .image {
-        top: 30px;
-        left: 80px;
+        top: 45px;
+        left: 60px;
         width: 30%;
       }
+}
+
+@media (min-width: 900px) { 
+    .firstSection {
+        height: 580px;
+    }
+
+    .firstSectionTexts {
+        left: 400px;
+    }
+
+    .invest {
+        font-size: 1.8rem;
+    }
+
+    .amazon {
+        font-size: 3.6rem;
+    }
+
+    .investNow {
+        font-size: 1.8rem;
+    }
+    
+    .image {
+        top: 5px;
+        left: 30px;
+        width: 35%;
+    }
 }

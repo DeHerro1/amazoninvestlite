@@ -35,9 +35,14 @@
     margin: 30px 0;
 }
 
+.cards {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 @media (min-width: 768px) {
     .page {
-        margin-top: 40px;
+        margin-top: 70px;
     }
     .cards {
         display: flex;
@@ -50,11 +55,11 @@
 
     .toHome {
     padding: 10px;
-    width: 60%;
+    width: 70%;
     }
 
     .info {
-        width: 55%;
+        width: 50%;
         font-weight: 300;
         font-size: 1.1rem;
         margin-right: 5px;
@@ -68,7 +73,7 @@
     .art_image {
         position: relative;
         top: -10px;
-        width: 45%;
+        width: 50%;
         height: 200px;
         align-self: center;
     }
@@ -80,10 +85,25 @@
     }
 
     .pageDetails {
-        margin: 0 120px 30px 120px;
+        margin: 0 120px 60px 120px;
+    }
+
+    .toHome {
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .info {
+        font-size: 1.4rem;
+    }
+
+    .art_image {
+        top: -60px;
+       
     }
 
     .infoHead {
         margin-left: 120px;
     }
 }
+

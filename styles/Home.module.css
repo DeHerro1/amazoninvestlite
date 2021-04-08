@@ -18,7 +18,27 @@
   background: white;
 }
 
+.payments, .secondPayments {
+  padding: 5px 10px;
+}
 .icons {
+  width: 100%;
+  height: 30px;
+  background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
+}
+
+.secondIcons {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .formHead {
@@ -36,6 +56,9 @@
     width: 80%;
     margin: 0 auto;
     box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
+  }
+  .icons {
+    box-shadow: none;
   }
 }
 
