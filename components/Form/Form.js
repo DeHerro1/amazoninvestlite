@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import {Link} from 'next/link';
 import styles from '../../styles/Form.module.css';
 import axios from 'axios';
+import Image from 'next/image';
 
 
-const Form = () => {
+const Form = ({countryDatas}) => {
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
@@ -16,6 +17,7 @@ const Form = () => {
   const [verifyEmail, setVerifyEmail] = useState(false);
   const [verifyPhone, setVerifyPhone] = useState(false);
 
+  console.log(countryDatas);
   
   const verification = (first, last, email, phone) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -119,6 +121,22 @@ const Form = () => {
                 <p className={styles.error}>Phone number length is incorrect</p>}
             </div>   
          </section>
+         {
+           countryDatas.map((countryData, index) => {
+             return (
+               <li key={index}>
+                 <p> {countryData.name} </p>
+                 <p> {countryData.code} </p>
+                 <img
+                  className={styles.countryImage}
+                  src={countryData.flag} 
+                  width={200}
+                  height={200}
+                  alt="col" />
+               </li>
+             )
+           })
+         }
          <button 
           type="submit"
           className={styles.submitButton}>

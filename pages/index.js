@@ -7,17 +7,24 @@ import Nav from '../components/Nav/Nav';
 import InvestPage from '../components/FirstSection/InvestPage';
 import Footer from '../components/Footer/Footer';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-export default function Home({posts}) {
+export default function Home({countryInfo}) {
+  const [countryDatas, setCountryDatas] = useState([]);
 
-  console.log(posts);
+  useEffect(() => {
+    return setCountryDatas(countryInfo);
+  },[])
+
+  console.log(countryDatas);
+  
   return (
     <div className={styles.container}>
        <Nav />
        <InvestPage />
        <div className={styles.form}>
        <p className={styles.formHead}>Invest in Amazon</p>
-         <Form />
+         <Form countryDatas={countryDatas} />
         <p className={styles.formFooter}>To invest in Amazon you must be at least 18 years old. 
            Minimum required capital 250$</p>
         <div className={styles.payments}>
@@ -40,13 +47,18 @@ export default function Home({posts}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://ipapi.co/8.8.8.8/json/');
+  const res = await fetch('https://restcountries.eu/rest/v2/all');
   const posts = await res.json();
+  let countryInfo = posts.map(post => {
+    return {
+      name: post.name,
+      flag: post.flag,
+      code: post.callingCodes
+    }
+  })
   return {
     props: {
-      posts
+      countryInfo
     }
   }
 }  
-
-// 'https://restcountries.eu/rest/v2/all
