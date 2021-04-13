@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {Link} from 'next/link';
 import styles from '../../styles/Form.module.css';
 import axios from 'axios';
@@ -9,15 +9,29 @@ const Form = ({countryDatas}) => {
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
-  const areaCode = useRef();
   const phone = useRef();
   const [verify, setVerify] = useState(false);
   const [verifyfirst, setVerifyFirst] = useState(false);
   const [verifyLast, setVerifyLast] = useState(false);
   const [verifyEmail, setVerifyEmail] = useState(false);
   const [verifyPhone, setVerifyPhone] = useState(false);
+  const [actualLocation, setActualLocation] = useState([]);
+  const [country, setCountry] = useState('');
+  const [showCountries, setShowCountries] = useState(false);
 
-  console.log(countryDatas);
+  useEffect(() => {
+    return (
+      axios.get('https://ipapi.co/json/')
+        .then(res => setActualLocation(res.data))
+        .catch(error => console.log(error))
+    )
+  }, []);
+    let CountryName = actualLocation.country_name;
+  
+const handleit = () => {
+  setCountry(countryCode);
+}
+  
   
   const verification = (first, last, email, phone) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -56,7 +70,7 @@ const Form = ({countryDatas}) => {
       'first_name': firstName,
       'last_name': lastName,
       'email': email,
-      'area_code': areaCode,
+      // 'area_code': areaCode,
       'phone': phone
     }
 
@@ -70,6 +84,10 @@ const Form = ({countryDatas}) => {
     }
   }
 
+  const handleCountryPhone = () => {
+    setShowCountries(true);
+  }
+
     return (
         <form onSubmit={handleRegistration} className={styles.form}>
         <section className={styles.inputs}>
@@ -81,7 +99,7 @@ const Form = ({countryDatas}) => {
               className={styles.input}
               placeholder="e.g John" />
               {verifyfirst && 
-                <p className={styles.error}> first name should have more than 2 or more letters </p>}
+                <p className={styles.error}> first name should have more than 2 letters </p>}
         </section>
         <section className={styles.inputs}>
             <label>Second Name</label>
@@ -92,12 +110,13 @@ const Form = ({countryDatas}) => {
               ref={lastName}
               placeholder="e.g Lander" />
               {verifyLast && 
-                <p className={styles.error}>last name should have more than 2 or more letters</p>}
+                <p className={styles.error}>last name should have more than 2 letters</p>}
          </section>     
          <section className={styles.inputs}>
             <label>Email</label>
             <input
               type="email"
+              required
               className={styles.emailInput}
               ref={email}
               className={styles.input}
@@ -108,35 +127,40 @@ const Form = ({countryDatas}) => {
          <section className={styles.inputs}>
            <label>Phone Number</label>
            <div className={styles.numbersInput}>
-            <input 
-              type="number"
-              ref={areaCode}
-              className={styles.firstNumber} />
+           <input readOnly 
+            className={styles.firstNumber} 
+            onClick={handleCountryPhone}
+            value="text"/>
             <input 
               type="number"
               ref={phone}
               className={styles.secondNumber}
               placeholder="8710211" />
-              {verifyPhone && 
+            </div>
+            {verifyPhone && 
                 <p className={styles.error}>Phone number length is incorrect</p>}
-            </div>   
          </section>
-         {
+         {showCountries && <div className={styles.countriesList}>
+           <input type="text" />
+            <div>{
            countryDatas.map((countryData, index) => {
              return (
-               <li key={index}>
-                 <p> {countryData.name} </p>
-                 <p> {countryData.code} </p>
+               <div key={index}className={styles.countries}>
                  <img
                   className={styles.countryImage}
                   src={countryData.flag} 
-                  width={200}
-                  height={200}
+                  width={20}
+                  height={20}
                   alt="col" />
-               </li>
+                 <p> {countryData.name} </p>
+                 <p> +{countryData.code} </p>
+               </div>
+          
              )
            })
-         }
+         }</div>
+         </div>}
+        
          <button 
           type="submit"
           className={styles.submitButton}>

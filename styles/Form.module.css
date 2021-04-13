@@ -11,6 +11,10 @@
     margin: 8px 10px;
 }
 
+.options {
+    position: absolute;
+}
+
 .inputs > label {
     font-size: 1.2rem;
     font-weight: 300;
@@ -39,6 +43,34 @@
 
 .error {
     background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.countriesList {
+    position: absolute;
+    top: 1010px;
+    left: 80px;
+    border: 1px solid grey;
+    width: 200px;
+    overflow-y: scroll;
+    height: 200px;
+    z-index: 100;
+    background-color: white;
+}
+
+.countries {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    font-size: 13px;
+    margin-top: 5px;
+
+}
+
+.countries > img, .countries > p {
+    margin-right: 5px;
 }
 
 .submitButton {
@@ -48,6 +80,7 @@
     margin-top: 10px;
     width: 80%;
     font-size: 1.4rem;
+    cursor: pointer;
     font-weight: 700;
     padding: 10px;
     border-radius: 10px;

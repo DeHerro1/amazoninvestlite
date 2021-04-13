@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css'
 import Nav from '../components/Nav/Nav';
 import InvestPage from '../components/FirstSection/InvestPage';
 import Footer from '../components/Footer/Footer';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function Home({countryInfo}) {
@@ -15,8 +14,6 @@ export default function Home({countryInfo}) {
   useEffect(() => {
     return setCountryDatas(countryInfo);
   },[])
-
-  console.log(countryDatas);
   
   return (
     <div className={styles.container}>
@@ -58,7 +55,8 @@ export async function getStaticProps() {
   })
   return {
     props: {
-      countryInfo
+      countryInfo,
+      posts
     }
   }
 }  
