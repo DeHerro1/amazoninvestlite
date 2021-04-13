@@ -28,9 +28,17 @@ const Form = ({countryDatas}) => {
   }, []);
     let CountryName = actualLocation.country_name;
   
-const handleit = () => {
-  setCountry(countryCode);
-}
+    const handleChange = (e) => {
+      const value = e.target.value;
+      let suggestions = [];
+      if(value.length > 0) {
+          const regex = new RegExp(`^${value}`, 'i');
+          
+          suggestions = display.sort().filter(v => regex.test(v));
+      }
+      setSaid(() => (suggestions));
+      setText(value);
+  }
   
   
   const verification = (first, last, email, phone) => {
@@ -85,7 +93,7 @@ const handleit = () => {
   }
 
   const handleCountryPhone = () => {
-    setShowCountries(true);
+    setShowCountries(prev => !prev);
   }
 
     return (
@@ -134,6 +142,8 @@ const handleit = () => {
             <input 
               type="number"
               ref={phone}
+              onChange={handleChange}
+              value={country}
               className={styles.secondNumber}
               placeholder="8710211" />
             </div>
@@ -141,8 +151,8 @@ const handleit = () => {
                 <p className={styles.error}>Phone number length is incorrect</p>}
          </section>
          {showCountries && <div className={styles.countriesList}>
-           <input type="text" />
-            <div>{
+           <input type="text" autoFocus className={styles.countriesSearchBar} />
+            <div className={styles.countriesLists}>{
            countryDatas.map((countryData, index) => {
              return (
                <div key={index}className={styles.countries}>

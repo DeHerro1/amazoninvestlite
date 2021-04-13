@@ -49,15 +49,26 @@
 }
 
 .countriesList {
+    padding: 5px;
     position: absolute;
     top: 1010px;
     left: 80px;
     border: 1px solid grey;
-    width: 200px;
-    overflow-y: scroll;
-    height: 200px;
+    width: 250px;
     z-index: 100;
     background-color: white;
+}
+
+.countriesSearchBar {
+    border: 1px solid grey;
+    margin: 5px auto;
+    width: 100%;
+    height: 30px;
+}
+
+.countriesLists {
+    overflow-y: scroll;
+    height: 200px;
 }
 
 .countries {
