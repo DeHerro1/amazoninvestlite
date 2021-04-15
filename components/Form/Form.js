@@ -5,41 +5,31 @@ import axios from 'axios';
 import Image from 'next/image';
 
 
-const Form = ({countryDatas}) => {
+const Form = () => {
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
   const phone = useRef();
-  const [verify, setVerify] = useState(false);
   const [verifyfirst, setVerifyFirst] = useState(false);
   const [verifyLast, setVerifyLast] = useState(false);
   const [verifyEmail, setVerifyEmail] = useState(false);
   const [verifyPhone, setVerifyPhone] = useState(false);
   const [actualLocation, setActualLocation] = useState([]);
-  const [country, setCountry] = useState('');
-  const [showCountries, setShowCountries] = useState(false);
+
+  let country_code = actualLocation[0];
+  let ip = actualLocation[1];
 
   useEffect(() => {
     return (
       axios.get('https://ipapi.co/json/')
-        .then(res => setActualLocation(res.data))
+        .then(res => {
+          return (
+            setActualLocation([res.data.country_calling_code, res.data.ip])
+          )
+        })
         .catch(error => console.log(error))
     )
   }, []);
-    let CountryName = actualLocation.country_name;
-  
-    const handleChange = (e) => {
-      const value = e.target.value;
-      let suggestions = [];
-      if(value.length > 0) {
-          const regex = new RegExp(`^${value}`, 'i');
-          
-          suggestions = display.sort().filter(v => regex.test(v));
-      }
-      setSaid(() => (suggestions));
-      setText(value);
-  }
-  
   
   const verification = (first, last, email, phone) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -62,38 +52,47 @@ const Form = ({countryDatas}) => {
     else {
       setVerifyEmail(false);
     }
-    if(phone.current.value.length !== 8) {
-      setVerifyPhone(true);
+    if(phone.current.value.length === 8) {
+      setVerifyPhone(false);
     }
     else {
-      setVerifyPhone(false);
+      setVerifyPhone(true);
     }
   }
 
   const handleRegistration = (e) => {
     e.preventDefault();
     verification(firstName, lastName, email, phone);
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    let first_name = firstName.current.value;
+    let last_name = lastName.current.value;
+    let mail = email.current.value;
+    let phone_number = Number(phone.current.value);
+    let verEmail = re.test(mail);
 
     let formData = {
-      'first_name': firstName,
-      'last_name': lastName,
-      'email': email,
-      // 'area_code': areaCode,
-      'phone': phone
+      'first_name': first_name,
+      'last_name': last_name,
+      'email': mail,
+      'area_code': country_code,
+      'ip': ip,
+      'phone': phone_number,
     }
 
-    if( firstName !== '' &&
-        lastName !== '' &&
-        phone !== '') {
-      console.log('data sent');
-       axios.post(' ​https://api.trackinglove.com/leads ',{formData})
-       .then(res => console.log(res))
-       .catch(error => console.error(error));
-    }
-  }
-
-  const handleCountryPhone = () => {
-    setShowCountries(prev => !prev);
+    // if( first_name.length > 2 &&
+    //     last_name.length > 2 &&
+    //     phone_number.length === 8 &&
+    //     verEmail === true
+    //      ) {
+           axios({
+             method: 'post',
+             url: 'https://api.trackinglove.com/leads',
+             data: formData
+           })
+           .then(res => console.log(res, 'data sent'))
+           .catch(error => console.error(error, 'data not sent'))
+    // }
   }
 
     return (
@@ -107,7 +106,7 @@ const Form = ({countryDatas}) => {
               className={styles.input}
               placeholder="e.g John" />
               {verifyfirst && 
-                <p className={styles.error}> first name should have more than 2 letters </p>}
+                <p className={styles.error}>Minimum two characters. Letters only (mandatory)</p> }
         </section>
         <section className={styles.inputs}>
             <label>Second Name</label>
@@ -118,60 +117,33 @@ const Form = ({countryDatas}) => {
               ref={lastName}
               placeholder="e.g Lander" />
               {verifyLast && 
-                <p className={styles.error}>last name should have more than 2 letters</p>}
+                <p className={styles.error}> Minimum two characters. Letters only (mandatory)</p>}
          </section>     
          <section className={styles.inputs}>
             <label>Email</label>
             <input
               type="email"
-              required
               className={styles.emailInput}
               ref={email}
               className={styles.input}
               placeholder="e.g name@gmail.com" />
               {verifyEmail && 
-                <p className={styles.error}>Incorrect email input</p>}
+                <p className={styles.error}>Invalid use format username@domain.xxx</p>}
          </section>
          <section className={styles.inputs}>
            <label>Phone Number</label>
            <div className={styles.numbersInput}>
-           <input readOnly 
-            className={styles.firstNumber} 
-            onClick={handleCountryPhone}
-            value="text"/>
+           <div className={styles.firstNumber}>{country_code}</div>
             <input 
-              type="number"
+              type="tel"
               ref={phone}
-              onChange={handleChange}
-              value={country}
               className={styles.secondNumber}
               placeholder="8710211" />
             </div>
             {verifyPhone && 
-                <p className={styles.error}>Phone number length is incorrect</p>}
+                <p className={styles.error}>Phone number (mandatory)</p>}
          </section>
-         {showCountries && <div className={styles.countriesList}>
-           <input type="text" autoFocus className={styles.countriesSearchBar} />
-            <div className={styles.countriesLists}>{
-           countryDatas.map((countryData, index) => {
-             return (
-               <div key={index}className={styles.countries}>
-                 <img
-                  className={styles.countryImage}
-                  src={countryData.flag} 
-                  width={20}
-                  height={20}
-                  alt="col" />
-                 <p> {countryData.name} </p>
-                 <p> +{countryData.code} </p>
-               </div>
-          
-             )
-           })
-         }</div>
-         </div>}
-        
-         <button 
+         <button
           type="submit"
           className={styles.submitButton}>
             Get info
