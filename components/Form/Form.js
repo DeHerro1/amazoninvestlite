@@ -80,19 +80,22 @@ const Form = () => {
       'phone': phone_number,
     }
 
-    // if( first_name.length > 2 &&
-    //     last_name.length > 2 &&
-    //     phone_number.length === 8 &&
-    //     verEmail === true
-    //      ) {
+    if( first_name.length > 2 &&
+        last_name.length > 2 &&
+        phone_number.length === 8 &&
+        verEmail === true
+         ) {
            axios({
-             method: 'post',
+             methods: "post",
+             headers: {
+               'Content-Type': 'application/x-www-form-urlencoded'
+             },
              url: 'https://api.trackinglove.com/leads',
              data: formData
            })
            .then(res => console.log(res, 'data sent'))
            .catch(error => console.error(error, 'data not sent'))
-    // }
+    }
   }
 
     return (
