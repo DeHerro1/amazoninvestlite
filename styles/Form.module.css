@@ -1,31 +1,90 @@
-.form {
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.formWrapper {
+    max-width: 360px;
+  margin: -37px auto 0;
+  z-index: 30;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: static;
+  letter-spacing: 1px;
+  background: white;
+  padding: 0 5px;
+  box-shadow: -1px 5px 23px rgb(0 0 0 / 25%);
+}
+
+.formHeadText {
+    background-color: var(--native_color);
+    font-size: 25px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+  }
+  
+  .formHead {
+    padding: 0;
+    margin: 0;
+  }
+
+  .payments, .secondPayments {
+    padding: 5px 10px;
+  }
+
+.icons {
+    width: 100%;
+    height: 45px;
+    background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 12px 20px 14px 20px;
+  }
 
 .inputs {
     display: flex;
     flex-direction: column;
-    margin: 5px 10px 0 10px;
+    margin: 5px 10px;
 }
+
+.formFooter {
+    text-align: center;
+    line-height: 1rem;
+    font-size: 13px;
+    color: rgb(143, 142, 142);
+  }
 
 .options {
     position: absolute;
 }
 
 .inputs > label {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 15px;
     padding: 5px 0;
+    line-height: 1.2;
+    color: #373737;
+}
+
+.input {
+    padding: 0 4px;
+   
+}
+
+.input:placeholder-shown {
+    font-size: 14px;
 }
 
 .input, 
 .firstNumber, 
 .secondNumber {
     height: 30px;
-    font-size: 1rem;
+    font-size: 13px;
+    border: 1px solid #b4b3b3;
+    border-radius: 5px;
+    padding: 0 8px;
 }
 
 .numbersInput {
@@ -37,7 +96,6 @@
     margin-right: 10px;
     text-align: center;
     font-size: 1.1rem;
-    border: 1px solid grey;
 }
 
 .secondNumber {
@@ -50,58 +108,89 @@
     margin: 0;
 }
 
-.countriesList {
-    padding: 5px;
-    position: absolute;
-    top: 1010px;
-    left: 80px;
-    border: 1px solid grey;
-    width: 250px;
-    z-index: 100;
-    background-color: white;
-}
-
-.countriesSearchBar {
-    border: 1px solid grey;
-    margin: 5px auto;
-    width: 100%;
-    height: 30px;
-}
-
-.countriesLists {
-    overflow-y: scroll;
-    height: 200px;
-}
-
-.countries {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    font-size: 13px;
-    margin-top: 5px;
-
-}
-
-.countries > img, .countries > p {
-    margin-right: 5px;
-}
-
 .submitButton {
     background-color: var(--native_color);
-    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: unset;
+    height: 56px;
     border: none;
     margin-top: 10px;
-    width: 80%;
+    width: 95%;
     font-size: 1.4rem;
+    line-height: 1;
     cursor: pointer;
     font-weight: 700;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 10px 0;
+    border-radius: 100px;
     align-self: center;
     box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
 }
 
 @media (min-width: 768px) {
+    .formWrapper {
+        position: relative;
+        max-width: 765px;
+        margin: 0 auto;
+      }
+
+      .formTop {
+        position: absolute;
+        top: -384px;
+        left: 80px;
+        width: 303px;
+      }
+
+      .form {
+          padding: 5px 5px 4px;
+      }
+  
+    .formHeadText {
+      border-radius: 10px 10px 0 0;
+      padding: 12px 0;
+      min-height: auto;
+      font-size: 20px;
+
+    }
+
+    .inputs {
+        margin: 5px 10px;
+    }
+
+    .input {
+        height: 25px;
+        padding: 0 7px;
+        font-size: 11px;
+    }
+
+    .inputs > label {
+        font-size: 12px;
+        font-weight: 200;
+        padding-bottom: 4px;
+    }
+
+    .firstNumber {
+        width: 40px;
+        margin-right: 10px;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .submitButton {
+        height: 50px;
+        width: 90%;
+        border-radius: 30px;
+    }
+
+    .formFooter {
+        font-size: 11px;
+        line-height: 13px;
+        margin-bottom: 0;
+    }
+}
+
+/* @media (min-width: 1199px) {
     .inputs {
         margin: 5px 10px;
     }
@@ -114,23 +203,6 @@
     .submitButton {
         height: 50px;
         width: 90%;
-        border-radius: 30px;
-    }
-}
-
-@media (min-width: 900px) {
-    .inputs {
-        margin: 5px 10px;
-    }
-
-    .inputs > label {
-        font-size: 1rem;
-        font-weight: 200;
-    }
-
-    .submitButton {
-        height: 50px;
-        width: 90%;
-        border-radius: 30px;
-    }
-}
+        border-radius: 30px; */
+     /* } */
+/* } */ 

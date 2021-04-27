@@ -6,90 +6,21 @@
 .nav {
   background-color: #040519;
   color: white;
-  height: 50px;
+  min-height: 31px;
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding: 5px 0 3px;
+  box-sizing: border-box;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  background: white;
+.navImage {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
 }
 
-.payments, .secondPayments {
-  padding: 5px 10px;
-}
-.icons {
-  width: 100%;
-  height: 30px;
-  background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
-}
-
-.secondIcons {
-  width: 100%;
-  height: 40px;
-  margin-top: 10px;
-  background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.formHead {
-  background-color: var(--native_color);
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: flex;
-  margin: 0;
-  padding: 10px 0;
-  justify-content: center;
-}
-
-@media (min-width: 400px) {
-  .form {
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
-  }
-  .icons {
-    box-shadow: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .form {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 40%;
-    border-radius: 10px;
-  }
-
-  .formHead {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    padding: 5px 0;
-  }
-
-  .formFooter {
-    text-align: center;
-    font-size: 0.8rem;
-    padding: 0 20px;
-  }
-}
-
-@media (min-width: 900px) {
-  .form {
-    position: absolute;
-    top: 80px;
-    right: 100px;
-    width: 30%;
-    border-radius: 10px;
-  }
+.navIcon {
+  height: 25.625;
+  width: 108px;
 }

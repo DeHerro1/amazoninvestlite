@@ -1,16 +1,16 @@
 import React from 'react';
-import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 
 const Nav = () => {
     return (
         <nav className={styles.nav}>
-            <Image
-                src="/lite.svg"
-                width="100"
-                height="30"
+            <div className={styles.navImage}>
+                <img
+                src="//alcest-investlite.com/static/common/images/header-logos/header-invlt-logo.svg?v=46789"
                 className={styles.navIcon}
                 alt="image" />
+            </div>
+            
        </nav>
     )
 }

@@ -1,96 +1,203 @@
 .page {
     display: flex;
     flex-direction: column;
+    align-self: center;
+    padding: 49px 0 5px 0;
+    margin: 0 auto;
+    max-width: 360px;
 }
 .page > h2 {
+    font-size: 25px;
     text-align: center;
-    margin: 20px;
+    margin: 0 auto;
+    padding: 0 20px;
+    line-height: 126.1%;
+    letter-spacing: 0.02em;
 }
 
-.toHome {
+.svg1 {
+    width: 44px;
+    height: 48px;
+}
+
+.svg3 {
+    width:47;
+    height:47;
+}
+
+.svg3 {
+    width:47;
+    height:47;
+}
+
+.svg4 {
+    width: 46px;
+    height: 47px;
+}
+
+.toHome, .backHome {
     background-color: var(--native_color);
-    padding: 20px;
-    border-radius: 30px;
+    border-radius: 100px;
     border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    width: 80%;
-    line-height: 1.4em;
     align-self: center;
+    width: 90%;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 126.1%;
+    padding: 13px 20px;
+    margin: 0 16px;
+    height: auto;
+}
+
+.backHome {
+    margin-top: 38px;
 }
 
 .pageDetails {
-    margin: 30px;
+    display: flex;
+    padding: 0 20px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.infos {
+    padding: 20px 22px 0;
+    
 }
 
 .infoHead {
-    margin-left: 30px;
-    padding-left: 10px;
-    border-left: 5px solid var(--native_color);
-    font-size: 1.5rem;
+    font-family: 'Monteserrat', sans-serif;
+    padding-left: 22px;
+    border-left: 9px solid var(--native_color);
+    letter-spacing: 0.02em;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-bottom: 18px;
     font-weight: 700;
 }
 
-.art_image {
-    margin: 30px 0;
+.info {
+    margin-bottom: 27px;
 }
 
-.cards {
+.infos > button {
     margin-top: 20px;
-    margin-bottom: 20px;
+}
+
+.art_image {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.art_image_image {
+    width: 100%;
+    display: block;
+}
+
+.bottomIcon > div {
+    width: 80%;
+    margin: 10px auto;
+    height: 45px;
+    background-image: url("//alcest-investlite.com/static/common/../funnels/amz_info_4620_2_es_lat/images/payment-methods.png?v=45720");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+.cards {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
     .page {
-        margin-top: 70px;
+        position: relative;
+        padding: 71px 0 0;
+        max-width: 765px;
     }
+
+    .page > h2 {
+        font-size: 24px;
+    }
+
     .cards {
-        display: flex;
+        margin-top: 0;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    .pageDetails {
-        display: flex;
-        margin: 0 30px 30px 30px;
+    .svg1, .svg2, .svg3, .svg4 {
+        width: 30px;
+        height: 48px;
     }
 
-    .toHome {
-    padding: 10px;
-    width: 70%;
+    .toHome, .backHome {
+        max-width: 497px;
+        font-size: 16px;
+        padding: 12px 0;
+        margin: 0 16px;
+        min-height: auto;
     }
 
-    .info {
-        width: 50%;
-        font-weight: 300;
-        font-size: 1.1rem;
-        margin-right: 5px;
+    .infos {
+        padding: 30px 10px 0;
     }
 
     .infoHead {
-        margin-top: 30px;
-        font-weight: 500;
+        font-size: 18px;
+        padding: 0 0 0 10px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        height: 40px;
+
+    }
+
+    .pageDetails {
+        padding: 0 10px;
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .info {
+        width: 60%;
+    }
+
+    .info > p {
+        max-width: 390px;
+        font-size: 15px;
+        line-height: 138.1%;
+        margin-bottom: 27px;
     }
 
     .art_image {
-        position: relative;
-        top: -10px;
-        width: 50%;
-        height: 200px;
-        align-self: center;
+        max-width: 317px;
+        margin: 10px 0 0 0;
+        padding-bottom: 5px;
+    }
+    
+    .art_image_image {
+        max-width: 100%;
+        display: block;
+    }
+
+    .bottomIcon {
+        width: 340px;
+        margin: 5px auto;
     }
 }
 
-@media (min-width: 900px) {
+/* @media (min-width: 1199px) {
     .page {
         margin-top: 80px;
     }
 
     .pageDetails {
         margin: 0 120px 60px 120px;
-    }
-
-    .toHome {
-        height: 60px;
-        font-size: 1.5rem;
     }
 
     .info {
@@ -105,5 +212,5 @@
     .infoHead {
         margin-left: 120px;
     }
-}
+} */
 

@@ -1,44 +1,94 @@
 .secure {
     width: 80%;
     margin: 50px auto;
+    margin-bottom: 30px;
     border-radius: 10px;
     padding: 10px;
     background-color: #f6f6f6;
     text-align: center;
+    letter-spacing: 0.6px;
 }
 
-.secure > div {
+.icon {
     position: relative;
     bottom: 60px;
     margin: 0 auto;
     border-radius: 50%;
     background-color: white;
-    padding: 20px;
+    padding: 25px;
     width: fit-content;
+}
+
+.secure > p {
+    position: relative;
+    margin: 0 auto;
+    top: -30px;
+    width: 80%;
+    font-size: 18px;
 }
 
 .secure:hover {
     background: white;
     transition: 0.2s ease-in-out;
-    box-shadow: 0px 4px 9px rgb(0 0 0 / 25%);
+    box-shadow: 0px 4px 9px rgb(0 0 0 / 10%);
     cursor: pointer;
 }
 
 .secure:hover  .icon {
-    box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+    box-shadow: 0 5px 5px rgb(0 0 0 / 5%);
     transition: 0.2s ease-in-out;
     cursor: pointer;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
     .secure {
-        margin: 20px 10px;
-        height: 120px;
-    }
+        max-width: 170px;
+        padding: 20px 0 20px;
+        height: 102px;
+        margin: 30px 0 30px 0;
+        }
+
+    .icon {
+        bottom: 20px;
+        left: 30px;
+        padding: 10px 10px 20px 10px;
+        /* background: red; */
+        transform: translate(-50%, -50%);
+        width: 59px;
+        height: 59px;
+        }
 
     .secure > p {
-        position: relative;
-        top: -50px;
-        font-size: 0.9rem;
+        font-size: 13px;
+        width: 150px;
+        line-height: 126.1%;
+        margin: 0 auto;
     }
 }
+
+/* @media (min-width: 1199px) {
+    .secure {
+        max-width: 170px;
+        padding: 20px 0 20px;
+        height: 102px;
+        margin: 30px 0 30px 0;
+        }
+
+    .icon {
+        bottom: 20px;
+        left: 30px;
+        padding: 10px 10px 20px 10px;
+        background: red;
+        transform: translate(-50%, -50%);
+        width: 59px;
+        height: 59px;
+        }
+
+    .secure > p {
+        font-size: 13px;
+        width: 150px;
+        line-height: 126.1%;
+        margin: 0 auto;
+    } */
+/* } */
+
