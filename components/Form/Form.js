@@ -3,37 +3,47 @@ import styles from '../../styles/Form.module.css';
 import axios from 'axios';
 
 
-const Form = ({ countryInfo }) => {
+const Form = ({ countryInfo, showModal }) => {
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
   const phone = useRef();
-  const [verifyfirst, setVerifyFirst] = useState(false);
   const [firstNameErr, setFirstNameErr] = useState('');
   const [lastNameErr, setLastNameErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [phoneErr, setPhoneErr] = useState('');
+  const [verifyfirst, setVerifyFirst] = useState(false);
   const [verifyLast, setVerifyLast] = useState(false);
   const [verifyEmail, setVerifyEmail] = useState(false);
   const [verifyPhone, setVerifyPhone] = useState(false);
   const [actualLocation, setActualLocation] = useState([]);
+  const [countryCode, setCountryCode] = useState([]);
 
   let country_code = actualLocation[0];
   let ip = actualLocation[1];
+  let countryName = actualLocation[2];
 
   useEffect(() => {
     return (
       axios.get('https://ipapi.co/json/')
         .then(res => {
           return (
-            setActualLocation([res.data.country_calling_code, res.data.ip])
+            setActualLocation([res.data.country_calling_code, res.data.ip, res.data.country_name])
           )
         })
         .catch(error => console.log(error))
     )
   }, []);
 
-  console.log(countryInfo);
+  useEffect(() => {
+    countryInfo.filter(info => {
+      if(info.name === countryName) {
+        setCountryCode([info.flag, country_code])
+      }
+    })
+  } ,[]);
+
+  console.log(countryCode);
   
   const verification = (first, last, email, phone) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -116,6 +126,7 @@ const Form = ({ countryInfo }) => {
         phone_number.length === 8 &&
         verEmail === true
          ) {
+           showModal;
            axios({
              methods: "post",
              headers: {
@@ -128,6 +139,8 @@ const Form = ({ countryInfo }) => {
            .catch(error => console.error(error, 'data not sent'))
     }
   }
+
+  console.log(countryCode);
 
     return (
       <div className={styles.formWrapper}>
@@ -173,7 +186,10 @@ const Form = ({ countryInfo }) => {
          <section className={styles.inputs}>
            <label>Phone Number</label>
            <div className={styles.numbersInput}>
-           <div className={styles.firstNumber}>{country_code}</div>
+            <div className={styles.firstNumber}>
+               <img src={countryCode[0]} className={styles.countryImg} alt="flag" />
+               <p> {countryCode[1]} </p>
+              </div>
             <input 
               type="tel"
               ref={phone}

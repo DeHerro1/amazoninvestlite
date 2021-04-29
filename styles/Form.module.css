@@ -92,10 +92,21 @@
 }
 
 .firstNumber {
-    width: 60px;
+    /* width: 80px; */
     margin-right: 10px;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    display: flex;
+    color: #373737;
+    line-height: 1.2;
+    align-items: center;
+    padding: 5px;
+}
+
+.countryImg {
+    width: 20px;
+    height: 15px;
+    margin: 5px;
 }
 
 .secondNumber {

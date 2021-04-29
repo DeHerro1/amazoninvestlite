@@ -6,21 +6,34 @@ import Nav from '../components/Nav/Nav';
 import InvestPage from '../components/FirstSection/InvestPage';
 import Footer from '../components/Footer/Footer';
 import { useState } from 'react';
+import Modal from '../components/Modal/modal';
 
 export default function Home({ sendInfo }) {
+  const [show, setShow] = useState(false);
+
+  const showModalHandler = () => {
+    setShow(true);
+  };
+
+  const hideModalHandler = () => {
+    setShow(false);
+  };
 
   return (
     <div className={styles.container}>
       <Head>
-      {/* <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> */}
-        <style>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+      {/* <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" /> */}
+        {/* <style>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-        </style>
+        </style> */}
       </Head>
        <Nav />
+       { show && <Modal hideModal={hideModalHandler} />}
        <InvestPage />
-         <Form countryInfo={sendInfo} />
+         <Form countryInfo={sendInfo} showModal={showModalHandler} />
         <div>
           <LandingPage />
         </div>
